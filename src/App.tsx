@@ -1,4 +1,4 @@
-function App(): React.JSX.Element {
+function App() {
   return (
     <main className="welcome" aria-labelledby="app-name">
       <p className="eyebrow">Your documentation, in one place.</p>
