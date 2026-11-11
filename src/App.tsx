@@ -1,13 +1,23 @@
+import { useState } from 'react'
+import LandingPage from './components/LandingPage'
 import Sidebar from './components/Sidebar'
 
 function App() {
+  const [documents, setDocuments] = useState<File[]>([])
+
+  if (documents.length === 0) {
+    return <LandingPage onUpload={setDocuments} />
+  }
+
   return (
     <div className="app">
-      <Sidebar />
-      <main className="welcome" aria-labelledby="app-name">
-        <p className="eyebrow">Your documentation, in one place.</p>
-        <h1 id="app-name">Markpad</h1>
-        <p>A quiet space to read your project’s Markdown documentation.</p>
+      <Sidebar documents={documents} />
+      <main className="welcome">
+        <p className="eyebrow">Markpad</p>
+        <h1>Your documents</h1>
+        <p>
+          {documents.length} Markdown {documents.length === 1 ? 'file' : 'files'} imported.
+        </p>
       </main>
     </div>
   )

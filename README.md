@@ -1,8 +1,9 @@
 # Markpad
 
 A frontend-only Markdown documentation reader built with React, TypeScript, Vite, and CSS.
-This is an incremental portfolio and learning project. The current version displays a sidebar
-and welcome screen; document import, Markdown rendering, and navigation are upcoming milestones.
+This is an incremental portfolio and learning project. The landing page lets users choose one
+or more Markdown files, then opens a workspace listing their filenames. Reading document
+contents, Markdown rendering, and document navigation are upcoming milestones.
 
 ## Getting started
 
@@ -33,6 +34,7 @@ Open the local URL printed by Vite in your browser. Stop the server with Ctrl+C.
 index.html            HTML entry point and root element
 src/main.tsx          Mounts the React application
 src/App.tsx           Root React component
+src/components/LandingPage.tsx  Welcome screen and file selection
 src/components/Sidebar.tsx  Sidebar component
 src/index.css         Global styles
 src/vite-env.d.ts     Vite's browser TypeScript definitions
@@ -47,7 +49,12 @@ Node.js is needed for these development tools; the application itself runs in a 
 
 ## File access and planned scope
 
-Markpad will read documents explicitly selected by the user using browser file APIs.
+Markpad accepts `.md` and `.markdown` files explicitly selected using a browser file picker.
+Invalid selections show an error; cancelling the picker keeps the landing page open.
+Selected `File` objects live in React state and are cleared by a page refresh. File contents
+are not read or sent to a server. The sidebar currently lists filenames without navigation.
+
+Markpad will read the selected documents using browser file APIs.
 It cannot freely access the local filesystem. Directory import will depend on browser
 support. Documents will be processed locally; there is no backend, authentication,
 database, or server-side file storage.
@@ -68,9 +75,9 @@ ESLint runs without a cache file. Editor preferences are left to your own editor
 ## Progress
 
 - [x] 1. Project setup — migrated to React, TypeScript, and Vite; configuration simplified.
-- [ ] 2. UI foundation — sidebar and basic responsive layout added; document viewer and table-of-contents panel pending.
+- [ ] 2. UI foundation — landing, upload CTA, workspace, and responsive layout added; document viewer and table-of-contents panel pending.
 - [ ] 3. Markdown rendering.
-- [ ] 4. File import.
+- [ ] 4. File import — multiple-file picker and extension validation added; reading contents and directory import pending.
 - [ ] 5. Document navigation.
 - [ ] 6. Table of contents.
 - [ ] 7. Search.
@@ -84,6 +91,6 @@ and development versus production builds. Understanding these concepts is still 
 our learning work.
 
 Lint, formatting, type checking, production build, and local HTTP serving have been verified.
-Browser visual inspection has not been automated. Document-reader features are not implemented yet.
+Browser visual inspection has not been automated. Markdown reading and navigation are not implemented yet.
 
 Next milestone: build the sidebar, document viewer, and table-of-contents layout.

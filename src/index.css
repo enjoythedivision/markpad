@@ -17,6 +17,61 @@ body {
   min-width: 320px;
 }
 
+.landing {
+  display: grid;
+  min-height: 100vh;
+  padding: 32px;
+  place-items: center;
+  text-align: center;
+}
+
+.landing-content {
+  width: min(100%, 560px);
+}
+
+.landing h1 {
+  margin: 12px 0 16px;
+  color: #172334;
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.landing-description {
+  margin: 0 0 28px;
+  font-size: 1.125rem;
+}
+
+.upload-button {
+  padding: 12px 20px;
+  border: 1px solid #172334;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #172334;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background: #30425c;
+}
+
+.upload-button:focus-visible {
+  outline: 3px solid #52647d;
+  outline-offset: 3px;
+}
+
+.upload-hint {
+  margin: 12px 0 0;
+  color: #52647d;
+  font-size: 0.875rem;
+}
+
+.upload-error {
+  color: #a12626;
+}
+
 .app {
   display: grid;
   grid-template-columns: 240px minmax(0, 1fr);
@@ -34,10 +89,17 @@ body {
   font-size: 1rem;
 }
 
-.sidebar p {
+.document-list {
+  padding: 0;
   margin: 0;
+  list-style: none;
+}
+
+.document-list li {
+  padding: 8px 0;
   color: #52647d;
   font-size: 0.875rem;
+  overflow-wrap: anywhere;
 }
 
 .welcome {
