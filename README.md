@@ -1,8 +1,8 @@
 # Markpad
 
 A frontend-only Markdown documentation reader built with React, TypeScript, Vite, and CSS.
-This is an incremental portfolio and learning project. The current starter displays a minimal
-welcome screen; document import, Markdown rendering, and navigation are upcoming milestones.
+This is an incremental portfolio and learning project. The current version displays a sidebar
+and welcome screen; document import, Markdown rendering, and navigation are upcoming milestones.
 
 ## Getting started
 
@@ -33,6 +33,7 @@ Open the local URL printed by Vite in your browser. Stop the server with Ctrl+C.
 index.html            HTML entry point and root element
 src/main.tsx          Mounts the React application
 src/App.tsx           Root React component
+src/components/Sidebar.tsx  Sidebar component
 src/index.css         Global styles
 src/vite-env.d.ts     Vite's browser TypeScript definitions
 vite.config.ts        Vite and React plugin configuration
@@ -67,7 +68,7 @@ ESLint runs without a cache file. Editor preferences are left to your own editor
 ## Progress
 
 - [x] 1. Project setup — migrated to React, TypeScript, and Vite; configuration simplified.
-- [ ] 2. UI foundation.
+- [ ] 2. UI foundation — sidebar and basic responsive layout added; document viewer and table-of-contents panel pending.
 - [ ] 3. Markdown rendering.
 - [ ] 4. File import.
 - [ ] 5. Document navigation.
