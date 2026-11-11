@@ -1,32 +1,33 @@
+import js from '@eslint/js'
 import { defineConfig } from 'eslint/config'
-import tseslint from '@electron-toolkit/eslint-config-ts'
-import eslintConfigPrettier from '@electron-toolkit/eslint-config-prettier'
-import eslintPluginReact from 'eslint-plugin-react'
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks'
-import eslintPluginReactRefresh from 'eslint-plugin-react-refresh'
+import prettier from 'eslint-config-prettier'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import tseslint from 'typescript-eslint'
 
 export default defineConfig(
-  { ignores: ['**/node_modules', '**/dist', '**/out'] },
-  tseslint.configs.recommended,
-  eslintPluginReact.configs.flat.recommended,
-  eslintPluginReact.configs.flat['jsx-runtime'],
-  {
-    settings: {
-      react: {
-        version: 'detect'
-      }
-    }
-  },
+  { ignores: ['node_modules/**', 'dist/**'] },
   {
     files: ['**/*.{ts,tsx}'],
+    extends: [js.configs.recommended, tseslint.configs.recommended],
+    languageOptions: { ecmaVersion: 2022 }
+  },
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    languageOptions: { globals: globals.browser },
     plugins: {
-      'react-hooks': eslintPluginReactHooks,
-      'react-refresh': eslintPluginReactRefresh
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh
     },
     rules: {
-      ...eslintPluginReactHooks.configs.recommended.rules,
-      ...eslintPluginReactRefresh.configs.vite.rules
+      ...reactHooks.configs.recommended.rules,
+      ...reactRefresh.configs.vite.rules
     }
   },
-  eslintConfigPrettier
+  {
+    files: ['vite.config.ts', 'eslint.config.mjs'],
+    languageOptions: { globals: globals.node }
+  },
+  prettier
 )

@@ -1,34 +1,88 @@
-# markpad
+# Markpad
 
-An Electron application with React and TypeScript
+A frontend-only Markdown documentation reader built with React, TypeScript, Vite, and CSS.
+This is an incremental portfolio and learning project. The current starter displays a minimal
+welcome screen; document import, Markdown rendering, and navigation are upcoming milestones.
 
-## Recommended IDE Setup
+## Getting started
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
+Use Node.js 22.18+ on the 22.x line, or Node.js 24+.
 
 ```bash
-$ npm install
+npm ci
+npm run dev
 ```
 
-### Development
+Open the local URL printed by Vite in your browser. Stop the server with Ctrl+C.
 
-```bash
-$ npm run dev
+## Commands
+
+| Command                | Purpose                                              |
+| ---------------------- | ---------------------------------------------------- |
+| `npm run dev`          | Start Vite with React hot reload.                    |
+| `npm run typecheck`    | Check browser source and Vite configuration types.   |
+| `npm run lint`         | Check code with ESLint, including React Hooks rules. |
+| `npm run format`       | Format project files with Prettier.                  |
+| `npm run format:check` | Check formatting without changing files.             |
+| `npm run build`        | Check types and create production assets in `dist/`. |
+| `npm run preview`      | Serve the production build locally.                  |
+
+## Project structure
+
+```text
+index.html            HTML entry point and root element
+src/main.tsx          Mounts the React application
+src/App.tsx           Root React component
+src/index.css         Global styles
+src/vite-env.d.ts     Vite's browser TypeScript definitions
+vite.config.ts        Vite and React plugin configuration
+tsconfig.json         Shared TypeScript settings for source and Vite configuration
+eslint.config.mjs     Linting rules
 ```
 
-### Build
+React manages the interface and state. TypeScript checks types during development.
+Vite serves source code during development and builds static assets for deployment.
+Node.js is needed for these development tools; the application itself runs in a browser.
 
-```bash
-# For windows
-$ npm run build:win
+## File access and planned scope
 
-# For macOS
-$ npm run build:mac
+Markpad will read documents explicitly selected by the user using browser file APIs.
+It cannot freely access the local filesystem. Directory import will depend on browser
+support. Documents will be processed locally; there is no backend, authentication,
+database, or server-side file storage.
 
-# For Linux
-$ npm run build:linux
-```
+`react-markdown`, `remark-gfm`, and `rehype-highlight` will be introduced in the
+Markdown milestone rather than installed before they are needed.
+
+## Configuration
+
+The project uses one TypeScript configuration for application code and Vite's configuration.
+Strict type checking remains enabled. This small setup shares browser and Node type definitions;
+Node is used by the development tools and does not provide filesystem access in the browser.
+
+Prettier settings live in `package.json`. Formatting commands target source code, root code files,
+and documentation directly, so a separate formatter configuration and ignore file are unnecessary.
+ESLint runs without a cache file. Editor preferences are left to your own editor settings.
+
+## Progress
+
+- [x] 1. Project setup — migrated to React, TypeScript, and Vite; configuration simplified.
+- [ ] 2. UI foundation.
+- [ ] 3. Markdown rendering.
+- [ ] 4. File import.
+- [ ] 5. Document navigation.
+- [ ] 6. Table of contents.
+- [ ] 7. Search.
+- [ ] 8. Preferences.
+- [ ] 9. Polish and quality.
+- [ ] 10. Deployment.
+
+The starter conversion was implemented by the assistant at the user's request. Concepts to
+review together include the HTML entry point, mounting React, components, type checking,
+and development versus production builds. Understanding these concepts is still part of
+our learning work.
+
+Lint, formatting, type checking, production build, and local HTTP serving have been verified.
+Browser visual inspection has not been automated. Document-reader features are not implemented yet.
+
+Next milestone: build the sidebar, document viewer, and table-of-contents layout.
